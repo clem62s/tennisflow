@@ -1,366 +1,81 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TennisFlow — Compteur & mini-jeu</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
-  <meta name="description" content="TennisFlow — compteur de match et mini-jeu de réflexes. Simple, léger, sans collecte de données." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TennisFlow</title>
   <style>
-    :root {
-      --bg: #f7fbf9;
-      --card: #ffffff;
-      --muted: #6b7280;
-      --accent: #2ea44f; /* vert tennis */
-      --glass: rgba(255, 255, 255, 0.6);
-      --radius: 16px;
-      --maxw: 1100px;
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    * {
-      box-sizing: border-box;
-    }
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      background: linear-gradient(180deg, var(--bg), #ffffff);
+      padding: 0;
+      background: #f7fbf9;
       color: #0f172a;
-      line-height: 1.5;
     }
-    .wrap {
-      max-width: var(--maxw);
-      margin: 36px auto;
+    header, footer {
       padding: 20px;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), #60d36a);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 800;
-      font-size: 22px;
-      box-shadow: 0 6px 18px rgba(46, 164, 79, 0.16);
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     h1 {
-      font-size: 28px;
       margin: 0;
+      font-size: 2em;
+      color: #2ea44f;
     }
-    p.lead {
-      color: var(--muted);
-      margin: 6px 0 0;
-    }
-    .cta {
-      display: flex;
-      gap: 12px;
-      align-items: center;
+    p {
+      margin: 10px 0;
+      color: #6b7280;
     }
     .btn {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(46, 164, 79, 0.14);
-      text-decoration: none;
       display: inline-block;
+      margin: 20px auto;
+      padding: 12px 24px;
+      background: #2ea44f;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(46,164,79,0.2);
     }
-    .btn.secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 1px solid rgba(46, 164, 79, 0.12);
-    }
-
     main {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 28px;
-      margin-top: 28px;
-    }
-    .hero {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), transparent);
-      padding: 22px;
-      border-radius: 18px;
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 18px;
-    }
-    .feature {
-      background: var(--card);
-      padding: 14px;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
       border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.03);
-      display: flex;
-      gap: 12px;
-      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      text-align: center;
     }
-    .icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, #eef9f1, var(--glass));
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    /* Slider */
-    .phone-card {
-      background: linear-gradient(180deg, #fff, #fbfffc);
-      padding: 18px;
-      border-radius: 18px;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
-    }
-    .slider {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      height: 480px;
-      background: #f3f7f3;
-    }
-    .slides {
-      display: flex;
-      transition: transform 400ms ease;
-    }
-    .slide {
-      min-width: 100%;
-      display: grid;
-      place-items: center;
-    }
-    .slide img {
-      max-width: 260px;
-      width: 80%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 20px 40px rgba(2, 6, 23, 0.06);
-    }
-    .slider-nav {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      margin-top: 12px;
-    }
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #e6eef0;
-      cursor: pointer;
-    }
-    .dot.active {
-      background: var(--accent);
-    }
-
-    /* Avis */
-    .reviews {
-      margin-top: 22px;
-      display: grid;
-      gap: 12px;
-    }
-    .review {
-      background: var(--card);
-      padding: 12px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(2, 6, 23, 0.04);
-    }
-    .stars {
-      color: gold;
-      font-weight: 700;
-    }
-
-    footer {
-      margin-top: 32px;
-      padding: 18px;
-      border-radius: 12px;
-      background: transparent;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* Responsive */
-    @media (max-width: 980px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-      .slider {
-        height: 360px;
-      }
-      .slide img {
-        max-width: 340px;
-      }
-    }
-    @media (max-width: 520px) {
-      .brand h1 {
-        font-size: 18px;
-      }
-      .logo {
-        width: 46px;
-        height: 46px;
-        font-size: 18px;
-      }
-      .slider {
-        height: 300px;
-      }
-    }
-
-    /* small helpers */
-    .muted {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    a.plain {
-      color: var(--accent);
+    .plain {
+      color: #2ea44f;
       text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">TF</div>
-        <div>
-          <h1>TennisFlow</h1>
-          <p class="lead">Compteur de match & mini-jeu de réflexes — léger, simple, sans collecte de données.</p>
-        </div>
-      </div>
-      <div class="cta">
-        <a class="btn" href="https://www.dropbox.com/scl/fi/60m2umh8pwmxp8wsuwizc/app-release.apk?rl=1" target="_blank" rel="noopener noreferrer" download>Télécharger l'APK</a>
-      </div>
-    </header>
+  <header>
+   <img src="images/logo.png" alt="Logo TennisFlow" style="width:100px; border-radius:50%;">
+    <h1>TennisFlow</h1>
+    <p>Compteur de match & mini-jeu de réflexes — simple, rapide, sans collecte de données</p>
+    <!-- BOUTON MODIFIÉ -->
+    <a class="btn" href="TennisFlow.apk" download>Télécharger l'APK</a>
+  </header>
 
-    <main>
-      <section class="hero">
-        <h2 style="margin:0 0 8px 0">Facile. Rapide. Conçu pour le tennis.</h2>
-        <p class="muted">Garde le score, personnalise les joueurs, et joue au mini-jeu pour t'entraîner. Parfait pour les entraîneurs, joueurs et amateurs.</p>
+  <main>
+    <h2>À propos</h2>
+   <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-top:20px;">
+  <img src="images/capture1.jpg" alt="Capture TennisFlow 1" style="width:200px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+  <img src="images/capture2.jpg" alt="Capture TennisFlow 2" style="width:200px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+</div>
+    <p>TennisFlow est une application Android conçue pour les joueurs et coachs de tennis. 
+       Elle permet de compter les points des matchs facilement et d'améliorer ses réflexes grâce à un mini-jeu.</p>
+  </main>
 
-        <div class="features" style="margin-top:18px">
-          <div class="feature">
-            <div class="icon">1</div>
-            <div>
-              <strong>Compteur de match</strong>
-              <div class="muted">Personnalise noms, sets et format.</div>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="icon">⚡</div>
-            <div>
-              <strong>Mini-jeu de réflexes</strong>
-              <div class="muted">Améliore ta réactivité avec des niveaux progressifs.</div>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="icon">🎮</div>
-            <div>
-              <strong>Design léger</strong>
-              <div class="muted">Fonctionne sur les téléphones et ordinateurs modestes.</div>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="icon">🔒</div>
-            <div>
-              <strong>Sans collecte</strong>
-              <div class="muted">Aucune donnée personnelle collectée par l'app ou le site.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="reviews">
-          <div style="display:flex;gap:12px;align-items:center;justify-content:space-between">
-            <div><strong>Avis utilisateurs</strong> <span class="muted">(exemples)</span></div>
-            <div class="muted">Note moyenne <strong>4.8 / 5</strong></div>
-          </div>
-
-          <div class="review">
-            <div style="display:flex;justify-content:space-between;align-items:center"><div><strong>Lucas, 16 ans</strong><div class="muted">Joueur de club</div></div><div class="stars">★★★★★</div></div>
-            <p class="muted" style="margin-top:8px">Super simple à utiliser pendant les entraînements. Le mini-jeu m'a aidé à améliorer mes réflexes.</p>
-          </div>
-
-          <div class="review">
-            <div style="display:flex;justify-content:space-between;align-items:center"><div><strong>Emma, coach</strong><div class="muted">Entraîneuse</div></div><div class="stars">★★★★★</div></div>
-            <p class="muted" style="margin-top:8px">Pratique pour suivre les matchs amicaux et pour proposer un défi aux jeunes joueurs.</p>
-          </div>
-        </div>
-
-      </section>
-
-      <aside class="phone-card">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-          <div><strong>Aperçu de l'app</strong><div class="muted">Glisse les images — tap pour agrandir</div></div>
-          <div class="muted">v1.0 • 2,3 MB</div>
-        </div>
-
-        <div class="slider" id="slider">
-          <div class="slides" id="slides">
-            <div class="slide"><img src="https://user-images.githubusercontent.com/46912818/107153566-601ae380-6979-11eb-8f11-98ed974b8e22.png" alt="Écran 1"></div>
-            <div class="slide"><img src="https://user-images.githubusercontent.com/46912818/107153570-61e4a700-6979-11eb-9a25-cac8edc92cd9.png" alt="Écran 2"></div>
-            <div class="slide"><img src="https://user-images.githubusercontent.com/46912818/107153568-611c1080-6979-11eb-90d2-726f19851d0e.png" alt="Écran 3"></div>
-          </div>
-        </div>
-        <div class="slider-nav" id="dots">
-          <div class="dot active" data-index="0"></div>
-          <div class="dot" data-index="1"></div>
-          <div class="dot" data-index="2"></div>
-        </div>
-      </aside>
-
-    </main>
-
-    <footer>
-      <div class="muted">© <strong>TennisFlow</strong> — Site sans cookies · Pas de collecte de données</div>
-      <div class="muted">Fichier APK: <a class="plain" href="https://www.dropbox.com/scl/fi/60m2umh8pwmxp8wsuwizc/app-release.apk?rl=1" target="_blank" rel="noopener noreferrer" download>tennisflow.apk</a></div>
-    </footer>
-  </div>
-
-  <script>
-    // Slider simple
-    (function() {
-      const slides = document.getElementById('slides');
-      const dots = Array.from(document.querySelectorAll('.dot'));
-      let idx = 0;
-      const total = slides.children.length;
-
-      function go(i) {
-        idx = (i + total) % total;
-        slides.style.transform = `translateX(${-idx * 100}%)`;
-        dots.forEach(d => d.classList.remove('active'));
-        dots[idx].classList.add('active');
-      }
-      dots.forEach(d => d.addEventListener('click', () => go(Number(d.dataset.index))));
-
-      // autoplay
-      let timer = setInterval(() => go(idx + 1), 3500);
-      // pause on hover
-      const slider = document.getElementById('slider');
-      slider.addEventListener('mouseenter', () => clearInterval(timer));
-      slider.addEventListener('mouseleave', () => timer = setInterval(() => go(idx + 1), 3500));
-    })();
-  </script>
+  <footer>
+    <p>© 2025 TennisFlow — Aucun cookie, aucune donnée collectée. <br>
+    <!-- LIEN MODIFIÉ -->
+    <a class="plain" href="TennisFlow.apk" download>tennisflow.apk</a></p>
+  </footer>
 </body>
 </html>
