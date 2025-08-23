@@ -1,142 +1,98 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TennisFlow - Mon Application</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TennisFlow</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f2f2f2;
-      color: #333;
+      background: #f7fbf9;
+      color: #0f172a;
     }
-
-    header {
-      background: #4CAF50;
-      padding: 40px 20px;
-      text-align: center;
-      color: white;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin-top: 20px;
-      border-radius: 10px;
-    }
-
-    .app-logo {
-      max-width: 120px;
-      display: block;
-      margin: 0 auto 20px;
-    }
-
-    h1, h2 {
-      text-align: center;
-    }
-
-    .description {
-      font-size: 1.1em;
-      line-height: 1.6;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .screenshots {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-
-    .screenshots img {
-      width: 250px;
-      border-radius: 10px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    }
-
-    .download-button {
-      display: block;
-      text-align: center;
-      margin: 30px auto;
-    }
-
-    .download-button a {
-      background: #4CAF50;
-      color: white;
-      padding: 15px 30px;
-      text-decoration: none;
-      font-size: 1.2em;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .download-button a:hover {
-      background: #45a049;
-    }
-
-    .testimonials {
-      margin-top: 40px;
-    }
-
-    .testimonial-placeholder {
-      text-align: center;
-      font-style: italic;
-      color: #777;
-    }
-
-    footer {
-      text-align: center;
+    header, footer {
       padding: 20px;
-      font-size: 0.9em;
-      color: #666;
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    h1 {
+      margin: 10px 0;
+      font-size: 2em;
+      color: #2ea44f;
+    }
+    p {
+      margin: 10px 0;
+      color: #6b7280;
+    }
+    .btn {
+      display: inline-block;
+      margin: 20px auto;
+      padding: 12px 24px;
+      background: #2ea44f;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(46,164,79,0.2);
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    .plain {
+      color: #2ea44f;
+      text-decoration: none;
+    }
+    .gallery {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    img.logo {
+      width: 120px;
+      border-radius: 50%;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="https://via.placeholder.com/120" alt="Logo App" class="app-logo">
+    <img src="logo.png" alt="Logo TennisFlow" class="logo">
     <h1>TennisFlow</h1>
-    <p>Comptez vos scores de tennis et améliorez vos réflexes</p>
+    <p>Compteur de match & mini-jeu de réflexes — simple, rapide, sans collecte de données</p>
+    <a class="btn" href="TennisFlow.apk" download>Télécharger l'APK</a>
   </header>
 
-  <div class="container">
-    <h2>Description</h2>
-    <p class="description">
-      TennisFlow est l'application parfaite pour les joueurs de tennis, débutants comme confirmés. 
-      Elle vous permet de suivre vos scores de match en temps réel et de jouer à un mini-jeu de réflexes 
-      pour vous entraîner et vous amuser !
-    </p>
+  <main>
+    <h2>À propos</h2>
+    <p>TennisFlow est une application Android conçue pour les joueurs et coachs de tennis. 
+       Elle permet de compter les points des matchs facilement et d'améliorer ses réflexes grâce à un mini-jeu.</p>
 
-    <h2>Captures d'écran</h2>
-    <div class="screenshots">
-      <img src="https://via.placeholder.com/250x500?text=Capture+1" alt="Capture 1">
-      <img src="https://via.placeholder.com/250x500?text=Capture+2" alt="Capture 2">
-      <img src="https://via.placeholder.com/250x500?text=Capture+3" alt="Capture 3">
+    <h2>Captures d’écran</h2>
+    <div class="gallery">
+      <img src="capture accueil.png" alt="Capture accueil TennisFlow">
+      <img src="capture jeu de reflexe .png" alt="Mini-jeu réflexe TennisFlow">
+      <img src="capture page match .png" alt="Page match TennisFlow">
     </div>
-
-    <div class="download-button">
-      <a href="lien_vers_ton_apk.apk" download>Télécharger l'application (.apk)</a>
-    </div>
-
-    <div class="testimonials">
-      <h2>Avis utilisateurs</h2>
-      <p class="testimonial-placeholder">
-        Les témoignages arriveront bientôt ici. 😉
-      </p>
-    </div>
-  </div>
+  </main>
 
   <footer>
-    &copy; 2025 TennisFlow – Tous droits réservés
+    <p>© 2025 TennisFlow — Aucun cookie, aucune donnée collectée. <br>
+    <a class="plain" href="TennisFlow.apk" download>tennisflow.apk</a></p>
   </footer>
-
 </body>
 </html>
