@@ -1,98 +1,38 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TennisFlow</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7fbf9;
-      color: #0f172a;
-    }
-    header, footer {
-      padding: 20px;
-      text-align: center;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    h1 {
-      margin: 10px 0;
-      font-size: 2em;
-      color: #2ea44f;
-    }
-    p {
-      margin: 10px 0;
-      color: #6b7280;
-    }
-    .btn {
-      display: inline-block;
-      margin: 20px auto;
-      padding: 12px 24px;
-      background: #2ea44f;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(46,164,79,0.2);
-    }
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      text-align: center;
-    }
-    .plain {
-      color: #2ea44f;
-      text-decoration: none;
-    }
-    .gallery {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .gallery img {
-      width: 250px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    img.logo {
-      width: 120px;
-      border-radius: 50%;
-    }
-  </style>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+ <meta name="description" content="TennisFlow : Suivez vos scores de match de tennis en temps réel et entraînez vos réflexes avec notre mini-jeu.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="tennis_flow">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+   <title>TennisFlow - Compteur de Score et Jeu de Réflexes</title>
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo TennisFlow" class="logo">
-    <h1>TennisFlow</h1>
-    <p>Compteur de match & mini-jeu de réflexes — simple, rapide, sans collecte de données</p>
-    <a class="btn" href="TennisFlow.apk" download>Télécharger l'APK</a>
-  </header>
-
-  <main>
-    <h2>À propos</h2>
-    <p>TennisFlow est une application Android conçue pour les joueurs et coachs de tennis. 
-       Elle permet de compter les points des matchs facilement et d'améliorer ses réflexes grâce à un mini-jeu.</p>
-
-    <h2>Captures d’écran</h2>
-    <div class="gallery">
-      <img src="capture accueil.png" alt="Capture accueil TennisFlow">
-      <img src="capture jeu de reflexe .png" alt="Mini-jeu réflexe TennisFlow">
-      <img src="capture page match .png" alt="Page match TennisFlow">
-    </div>
-  </main>
-
-  <footer>
-    <p>© 2025 TennisFlow — Aucun cookie, aucune donnée collectée. <br>
-    <a class="plain" href="TennisFlow.apk" download>tennisflow.apk</a></p>
-  </footer>
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
